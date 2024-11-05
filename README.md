@@ -24,7 +24,6 @@ There are a few empty files and directories included in the project as it was pa
 
    ```bash
    git clone https://github.com/ongkhooi/lumi-assessment.git
-   cd your-repo-name
    ```
 
 2. **Environment Variables**
