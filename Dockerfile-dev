@@ -1,0 +1,9 @@
+# Base image: Official Ruby image
+FROM ruby:3.3
+
+# Set up working directory in the container
+WORKDIR /app
+
+COPY . .
+RUN bundle install
+

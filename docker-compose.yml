@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: news_aggregator_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile-dev
+    ports:
+      - "3000:3000"
+    command: rails server -b 0.0.0.0
+    volumes:
+      - ".:/app"
+    environment:
+      RAILS_ENV: development
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: news_aggregator_db
+      DATABASE_URL: postgres://postgres:password@db:5432/news_aggregator_db
+    depends_on:
+      - db
+      - sidekiq
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+    environment:
+      RAILS_ENV: development
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: news_aggregator_db
+      DATABASE_URL: postgres://postgres:password@db:5432/news_aggregator_db
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  db_data:
