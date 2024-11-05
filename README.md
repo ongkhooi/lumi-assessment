@@ -1,5 +1,7 @@
 # Lumi Assessment
 
+There are a few empty files and directories included in the project as it was part of the rails scaffolding when I ran the rails server command for the first time.
+
 ## Table of Contents
 
 - [Requirements](#requirements)
