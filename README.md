@@ -38,32 +38,6 @@ There are a few empty files and directories included in the project as it was pa
 
    This will download and install all required dependencies.
 
-## Running the Project
-
-1. **Start the Containers**
-
-   Start the application and its services (web, database, redis, sidekiq) using Docker Compose:
-
-   ```bash
-   docker-compose up
-   ```
-
-   This command will start the application and output logs for each service in the terminal. You can access the Rails application at `http://localhost:3000`.
-
-2. **Run in Detached Mode**
-
-   To run the containers in the background, add the `-d` flag:
-
-   ```bash
-   docker-compose up -d
-   ```
-
-   You can stop the services later with:
-
-   ```bash
-   docker-compose down
-   ```
-
 ## Database Setup
 
 1. **Create the Database**
@@ -90,11 +64,31 @@ There are a few empty files and directories included in the project as it was pa
    docker-compose run web rails db:seed
    ```
 
-## Running Migrations
+## Running the Project
 
-```bash
-docker-compose run web rails db:create db:migrate
-```
+1. **Start the Containers**
+
+   Start the application and its services (web, database, redis, sidekiq) using Docker Compose:
+
+   ```bash
+   docker-compose up
+   ```
+
+   This command will start the application and output logs for each service in the terminal. You can access the Rails application at `http://localhost:3000`.
+
+2. **Run in Detached Mode**
+
+   To run the containers in the background, add the `-d` flag:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+   You can stop the services later with:
+
+   ```bash
+   docker-compose down
+   ```
 
 ## Useful Docker Commands
 
