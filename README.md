@@ -2,6 +2,8 @@
 
 There are a few empty files and directories included in the project as it was part of the rails scaffolding when I ran the rails server command for the first time.
 
+In this project, I chose to use Docker to containerize the application as I wanted to have an isolated environment for development.
+
 ## Table of Contents
 
 - [Requirements](#requirements)
@@ -89,6 +91,10 @@ There are a few empty files and directories included in the project as it was pa
    ```bash
    docker-compose down
    ```
+
+3. **Endpoints**
+
+   You can access the list of publishers at `http://localhost:3000/publishers` as well as fetch the article feed at the root index or `http://localhost:3000/news`. The article feed will show it being empty if you ran it for the first time. As specified in the requirements, the crawler is supposed to run every hour and I used a cron scheduler to do this, so the crawler will only scrape the articles at the next 0th hour after you set up the containers.
 
 ## Useful Docker Commands
 
